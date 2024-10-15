@@ -7,7 +7,8 @@ def generate_ethereum_address():
     public_key = private_key.public_key.format(compressed=False)[1:]
     addr = keccak_256(public_key).digest()[-20:]
     address = addr.hex()
-    #print(f'0x{address}, {private_key.to_hex()}')
+    # Uncomment the next line to print the address and private key
+    # print(f'0x{address}, {private_key.to_hex()}')
 
     return address
 
@@ -22,18 +23,18 @@ def measure_generation_speed(duration_seconds):
     return count
 
 def main():
-    # Pomiar generowania w ciągu 1 sekundy
+    # Measure generation over 1 minute
     addresses_in_60_sec = measure_generation_speed(60)
 
-    # Pomiar generowania w ciągu 1 minuty (na podstawie danych z 1 sekundy)
+    # Measurement of generation over 1 minute (based on data from 1 second)
     addresses_in_1_min = addresses_in_60_sec
     print(f"Number of addresses generated in 1 minute: {addresses_in_1_min}")
 
-    # Pomiar generowania w ciągu 1 godziny
+    # Measurement of generation over 1 hour
     addresses_in_1_hour = addresses_in_1_min * 60
     print(f"Number of addresses generated in 1 hour: {addresses_in_1_hour}")
 
-    # Pomiar generowania w ciągu 1 tygodnia
+    # Measurement of generation over 1 week
     addresses_in_1_week = addresses_in_1_hour * 24 * 7
     print(f"Number of addresses generated in 1 week: {addresses_in_1_week}")
 
